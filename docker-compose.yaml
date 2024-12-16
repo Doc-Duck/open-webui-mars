@@ -1,34 +1,32 @@
-services:
-  ollama:
-    volumes:
-      - ollama:/root/.ollama
-    container_name: ollama
-    pull_policy: always
-    tty: true
-    restart: unless-stopped
-    image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+name: mars-webui
 
-  open-webui:
+services:
+  openwebui:
     build:
-      context: .
-      args:
-        OLLAMA_BASE_URL: '/ollama'
+      context: ./webui
       dockerfile: Dockerfile
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-    container_name: open-webui
+    ports:
+      - "3000:8080"
     volumes:
       - open-webui:/app/backend/data
-    depends_on:
-      - ollama
+    networks:
+      - mars-network
+
+  sber-wrapper:
+    build:
+      context: ./sber_wrapper
+      dockerfile: Dockerfile
     ports:
-      - ${OPEN_WEBUI_PORT-3000}:8080
+      - "8501:8000"
     environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
-      - 'WEBUI_SECRET_KEY='
-    extra_hosts:
-      - host.docker.internal:host-gateway
+      - PYTHONUNBUFFERED=1
     restart: unless-stopped
+    networks:
+      - mars-network
+
+networks:
+  mars-network:
+    driver: bridge
 
 volumes:
-  ollama: {}
-  open-webui: {}
+  open-webui:
