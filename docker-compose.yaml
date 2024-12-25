@@ -1,16 +1,20 @@
+name: mars-webui  # Add this line at the top
+
 services:
   openwebui:
+    container_name: mars-openwebui  # Add explicit container name
     build:
       context: ./webui
       dockerfile: Dockerfile
     ports:
       - "3000:8080"
     volumes:
-      - open-webui:/app/backend/data
+      - mars-webui-data:/app/backend/data  # Rename volume
     networks:
       - mars-network
 
   sber-wrapper:
+    container_name: mars-sber-wrapper  # Add explicit container name
     build:
       context: ./sber_wrapper
       dockerfile: Dockerfile
@@ -24,7 +28,9 @@ services:
 
 networks:
   mars-network:
+    name: mars-network  # Add explicit network name
     driver: bridge
 
 volumes:
-  open-webui:
+  mars-webui-data:  # Rename volume
+    name: mars-webui-data  # Add explicit volume name
