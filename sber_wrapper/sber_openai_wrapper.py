@@ -31,7 +31,8 @@ app.add_middleware(
 # Model configurations
 MODELS = {
     "GigaChat": "GigaChat",
-    "GigaChat-Pro": "GigaChat-Pro"
+    "GigaChat-Pro": "GigaChat-Pro",
+    "GigaChat-Max": "GigaChat-Max"
 }
 
 # Initialize Sber configs for both models

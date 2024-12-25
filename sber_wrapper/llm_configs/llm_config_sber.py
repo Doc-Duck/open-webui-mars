@@ -1,12 +1,13 @@
 from gigachat import GigaChat
 from llm_configs.llm_config_base import LLMConfig
+from config import API_KEY
 
 def get_sber_config(model_name: str):
     try:
         # Initialize GigaChat client with credentials
         gigachat_client = GigaChat(
-            credentials="NjgyMDc2NWEtYjZiNy00ZTdkLTkwNDYtYTdkNDFkYTU0ZGVhOjEzOTI3M2I2LTU2ZGItNDM2My05ZDhhLTcwNTk3NWVhZjRiOQ==",
-            scope="GIGACHAT_API_PERS",
+            credentials=API_KEY,
+            scope="GIGACHAT_API_CORP",
             model=model_name,
             verify_ssl_certs=False
         )
