@@ -1,11 +1,7 @@
 name: mars-webui
 services:
   openwebui:
-    container_name: mars-openwebui
-    build:
-      context: ./webui
-      dockerfile: Dockerfile
-      network: host  # Add this line
+    image: doc4duck/mars-openwebui:latest
     ports:
       - "3000:8080"
     volumes:
