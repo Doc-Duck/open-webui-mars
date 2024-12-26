@@ -11,11 +11,7 @@ services:
     pull_policy: always  # Add this line
 
   sber-wrapper:
-    container_name: mars-sber-wrapper
-    build:
-      context: ./sber_wrapper
-      dockerfile: Dockerfile
-      network: host  # Add this line
+    image: doc4duck/sber-wrapper:latest
     ports:
       - "8501:8000"
     env_file:
