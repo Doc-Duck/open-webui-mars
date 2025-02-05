@@ -13,4 +13,4 @@ COPY . .
 EXPOSE 8000
 
 # Command to run the application
-CMD ["python", "sber_openai_wrapper.py"]
+CMD ["python", "-m", "sber_wrapper.main"]

@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: app",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "sber_wrapper.main",
+            "console": "integratedTerminal"
+        }
+    ]
+}

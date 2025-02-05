@@ -7,5 +7,4 @@ from openai import OpenAI, AsyncOpenAI
 class LLMConfig:
     client: OpenAI
     async_client: AsyncOpenAI
-    model_name: str
     timeout: int = 120
